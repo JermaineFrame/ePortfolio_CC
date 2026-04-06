@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jermaine Johnson — Academic Portfolio</title>
+  <meta name="description" content="Academic portfolio of Jermaine Johnson, Ph.D. Candidate in Texts &amp; Technology – Digital Media at UCF." />
+
+  <!-- Google Fonts: Playfair Display (serif headings) + Inter (body/nav) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── DESIGN TOKENS ──────────────────────────────────────────────── */
+    :root {
+      --navy:       #2d4a8a;
+      --navy-dark:  #1e3366;
+      --navy-light: #e8edf7;
+      --text:       #1a1a2e;
+      --text-muted: #5a5a72;
+      --border:     #d8dce8;
+      --bg:         #fafafa;
+      --white:      #ffffff;
+      --serif:      'Playfair Display', Georgia, serif;
+      --sans:       'Inter', system-ui, sans-serif;
+      --max-w:      860px;
+      --gap:        5rem;
+    }
+
+    /* ── RESET ──────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.7; }
+    a { color: var(--navy); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── NAVIGATION ─────────────────────────────────────────────────── */
+    #nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 250, 250, 0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .nav-brand {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--navy);
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--navy); text-decoration: none; }
+
+    /* Mobile hamburger */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+    }
+    @media (max-width: 660px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 0.5rem 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li a {
+        display: block;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.875rem;
+      }
+    }
+
+    /* ── LAYOUT ─────────────────────────────────────────────────────── */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: var(--gap) 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    /* ── SECTION HEADINGS ───────────────────────────────────────────── */
+    .section-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2.25rem;
+      line-height: 1.2;
+    }
+
+    /* ── HERO ───────────────────────────────────────────────────────── */
+    #hero {
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, #3a5faa 100%);
+      color: var(--white);
+      padding: 5.5rem 0 4.5rem;
+    }
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 0.875rem;
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(2.25rem, 6vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      opacity: 0.88;
+      margin-bottom: 1.75rem;
+    }
+    .hero-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      margin-bottom: 2.5rem;
+      font-size: 0.875rem;
+      opacity: 0.85;
+    }
+    .hero-contact span { display: flex; align-items: center; gap: 0.35rem; }
+    .hero-contact a { color: inherit; }
+    .hero-divider {
+      width: 48px;
+      height: 3px;
+      background: rgba(255,255,255,0.35);
+      margin-bottom: 1.75rem;
+      border-radius: 2px;
+    }
+    .hero-statement {
+      max-width: 680px;
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      opacity: 0.92;
+      padding-left: 1.25rem;
+      border-left: 3px solid rgba(255,255,255,0.3);
+    }
+
+    /* ── EDUCATION ──────────────────────────────────────────────────── */
+    .edu-list { display: flex; flex-direction: column; gap: 0; }
+    .edu-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto auto;
+      column-gap: 1.5rem;
+      padding: 1.375rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .edu-item:last-child { border-bottom: none; }
+    .edu-degree {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 1.0625rem;
+      grid-column: 1;
+      grid-row: 1;
+    }
+    .edu-field {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      grid-column: 1;
+      grid-row: 2;
+    }
+    .edu-institution {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--navy);
+      grid-column: 1;
+      grid-row: 3;
+      margin-top: 0.2rem;
+    }
+    .edu-year {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      grid-column: 2;
+      grid-row: 1;
+      white-space: nowrap;
+      padding-top: 0.25rem;
+      text-align: right;
+    }
+
+    /* ── PROJECTS ───────────────────────────────────────────────────── */
+    .project-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--navy);
+      border-radius: 3px;
+      padding: 1.5rem 1.75rem;
+    }
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.35rem;
+    }
+    .project-title {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 1.125rem;
+    }
+    .project-year {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--navy);
+      background: var(--navy-light);
+      padding: 0.15rem 0.65rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .project-type {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 0.75rem;
+    }
+    .project-desc {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* ── PRESENTATIONS ──────────────────────────────────────────────── */
+    .pres-list { display: flex; flex-direction: column; gap: 0.875rem; }
+    .pres-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.125rem 1.25rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+    }
+    .pres-icon {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background: var(--navy-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pres-icon svg { width: 15px; height: 15px; fill: var(--navy); }
+    .pres-name {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text);
+    }
+    .pres-venue {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    /* ── AWARDS & EXPERIENCE ────────────────────────────────────────── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    @media (max-width: 620px) {
+      .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    .subsection-title {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--navy-light);
+    }
+
+    /* Awards list */
+    .award-list { list-style: none; display: flex; flex-direction: column; gap: 0.875rem; }
+    .award-item { display: flex; align-items: flex-start; gap: 0.65rem; }
+    .award-dot {
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      background: var(--navy);
+      border-radius: 50%;
+      margin-top: 0.55rem;
+    }
+    .award-text { font-size: 0.9125rem; line-height: 1.5; }
+    .award-text small { display: block; color: var(--text-muted); font-size: 0.8rem; margin-top: 0.1rem; }
+
+    /* Experience list */
+    .exp-list { display: flex; flex-direction: column; }
+    .exp-item { padding: 0.875rem 0; border-bottom: 1px solid var(--border); }
+    .exp-item:first-child { padding-top: 0; }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-role { font-weight: 600; font-size: 0.9375rem; }
+    .exp-org { font-size: 0.9rem; color: var(--navy); margin-top: 0.1rem; }
+    .exp-dates { font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-top: 0.1rem; }
+
+    /* ── SKILLS BAND ────────────────────────────────────────────────── */
+    #skills {
+      background: var(--navy);
+      padding: 2.25rem 0;
+    }
+    .skills-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem 1.5rem;
+    }
+    .skills-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      white-space: nowrap;
+    }
+    .skill-tag {
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────────────────── */
+    footer {
+      background: var(--navy-dark);
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.8125rem;
+      line-height: 1.8;
+    }
+    footer a { color: rgba(255,255,255,0.8); }
+    footer a:hover { color: #fff; }
+
+    /* ── SCROLL REVEAL ──────────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* Stagger children inside a reveal parent */
+    .reveal-group > * {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+    .reveal-group.visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0s; }
+    .reveal-group.visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.07s; }
+    .reveal-group.visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.14s; }
+    .reveal-group.visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.21s; }
+    .reveal-group.visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.28s; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── NAV ─────────────────────────────────────────────────────────── -->
+  <nav id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <span class="nav-brand">Jermaine Johnson</span>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="#education">Education</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#presentations">Presentations</a></li>
+        <li><a href="#awards">Awards &amp; Experience</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── HERO ─────────────────────────────────────────────────────────── -->
+  <header id="hero">
+    <div class="container">
+      <p class="hero-eyebrow">Academic Portfolio</p>
+      <h1 class="hero-name">Jermaine Johnson</h1>
+      <p class="hero-title">Ph.D. Candidate, Texts &amp; Technology — Digital Media</p>
+      <div class="hero-contact">
+        <span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.99 5.99l.83-.83a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          407.973.1747
+        </span>
+        <span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Orlando, FL
+        </span>
+        <span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:JermaineJeromeJohnson@gmail.com">JermaineJeromeJohnson@gmail.com</a>
+        </span>
+        <span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          University of Central Florida
+        </span>
+      </div>
+      <div class="hero-divider" aria-hidden="true"></div>
+      <p class="hero-statement">My research examines digital content preservation and the tension between ownership and access in the digital age. Drawing on my background in visual communication and digital media, I investigate how licensing frameworks—like subscription models, DRM, and planned obsolescence—erode consumer ownership of games, film, music, and other digital cultural works.</p>
+    </div>
+  </header>
+
+  <!-- ── EDUCATION ────────────────────────────────────────────────────── -->
+  <section id="education">
+    <div class="container">
+      <p class="section-label reveal">Academic Background</p>
+      <h2 class="section-title reveal">Education</h2>
+      <div class="edu-list reveal-group">
+
+        <div class="edu-item">
+          <span class="edu-degree">Doctor of Philosophy</span>
+          <span class="edu-year">Expected May 2029</span>
+          <span class="edu-field">Texts &amp; Technology — Digital Media</span>
+          <span class="edu-institution">University of Central Florida</span>
+        </div>
+
+        <div class="edu-item">
+          <span class="edu-degree">Master of Arts</span>
+          <span class="edu-year">May 2025</span>
+          <span class="edu-field">Digital Media</span>
+          <span class="edu-institution">University of Central Florida</span>
+        </div>
+
+        <div class="edu-item">
+          <span class="edu-degree">Bachelor of Fine Arts</span>
+          <span class="edu-year">May 2023</span>
+          <span class="edu-field">Emerging Media — Graphic Design</span>
+          <span class="edu-institution">University of Central Florida</span>
+        </div>
+
+        <div class="edu-item">
+          <span class="edu-degree">Associate of Arts</span>
+          <span class="edu-year">December 2020</span>
+          <span class="edu-field">Graphic Design</span>
+          <span class="edu-institution">Polk State College</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ─────────────────────────────────────────────────────── -->
+  <section id="projects">
+    <div class="container">
+      <p class="section-label reveal">Scholarly &amp; Creative Work</p>
+      <h2 class="section-title reveal">Projects</h2>
+      <div class="project-list">
+
+        <div class="project-card reveal">
+          <div class="project-header">
+            <span class="project-title">Noctoflora: Last Light</span>
+            <span class="project-year">2025</span>
+          </div>
+          <p class="project-type">3D Sidescrolling Game &mdash; Master's Thesis</p>
+          <p class="project-desc">A thesis project developed in Unity 6 exploring what happens when humanity tries to perfect nature instead of living within it. Served as sole designer, developer, and 3D modeler, integrating game mechanics with critical media scholarship on digital preservation and authorship.</p>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-header">
+            <span class="project-title">Mapping Seminal Works in the Digital Humanities</span>
+            <span class="project-year">2026</span>
+          </div>
+          <p class="project-type">Network Analysis &amp; Visualization</p>
+          <p class="project-desc">A Gephi-based computational network analysis of 23 major texts in the Digital Humanities canon. Using modularity measurement, centrality measures, and clustering algorithms, the project identifies and visualizes three areas of overlap: shared scholarly themes, author networks, and disciplinary intersections.</p>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-header">
+            <span class="project-title">Procedural Obsolescence</span>
+            <span class="project-year">In Progress</span>
+          </div>
+          <p class="project-type">Doctoral Dissertation</p>
+          <p class="project-desc">Examines how digital licensing frameworks allow intellectual property holders to maintain perpetual control over cultural artifacts while simultaneously disclaiming responsibility for their long-term preservation. Drawing on case studies in video game history, the dissertation interrogates the legal, cultural, and archival tensions inherent in digital ownership.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRESENTATIONS ────────────────────────────────────────────────── -->
+  <section id="presentations">
+    <div class="container">
+      <p class="section-label reveal">Public Scholarship</p>
+      <h2 class="section-title reveal">Presentations</h2>
+      <div class="pres-list reveal-group">
+
+        <div class="pres-item">
+          <div class="pres-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 3H3a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h7v2H8v2h8v-2h-2v-2h7a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 14H4V5h16v12z"/></svg>
+          </div>
+          <div>
+            <p class="pres-name">Amy Zeh High Impact Practices Showcase</p>
+            <p class="pres-venue">University of Central Florida</p>
+          </div>
+        </div>
+
+        <div class="pres-item">
+          <div class="pres-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 3H3a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h7v2H8v2h8v-2h-2v-2h7a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 14H4V5h16v12z"/></svg>
+          </div>
+          <div>
+            <p class="pres-name">NSCM Digital Media MA Studio Showcase</p>
+            <p class="pres-venue">University of Central Florida</p>
+          </div>
+        </div>
+
+        <div class="pres-item">
+          <div class="pres-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 3H3a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h7v2H8v2h8v-2h-2v-2h7a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 14H4V5h16v12z"/></svg>
+          </div>
+          <div>
+            <p class="pres-name">3D Modeling and Design Workshop</p>
+            <p class="pres-venue">Polk State College</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── AWARDS & EXPERIENCE ───────────────────────────────────────────── -->
+  <section id="awards">
+    <div class="container">
+      <p class="section-label reveal">Recognition &amp; Professional History</p>
+      <h2 class="section-title reveal">Awards &amp; Experience</h2>
+      <div class="two-col">
+
+        <div class="reveal">
+          <h3 class="subsection-title">Honors &amp; Awards</h3>
+          <ul class="award-list" role="list">
+            <li class="award-item">
+              <span class="award-dot" aria-hidden="true"></span>
+              <span class="award-text">
+                Dean's List — College of Arts and Humanities
+                <small>University of Central Florida &middot; Fall 2021, Spring 2022</small>
+              </span>
+            </li>
+            <li class="award-item">
+              <span class="award-dot" aria-hidden="true"></span>
+              <span class="award-text">
+                Magna Cum Laude
+                <small>Polk State College &middot; Fall 2020</small>
+              </span>
+            </li>
+            <li class="award-item">
+              <span class="award-dot" aria-hidden="true"></span>
+              <span class="award-text">
+                Certificate in Graphic Design
+                <small>Polk State College &middot; Fall 2020</small>
+              </span>
+            </li>
+            <li class="award-item">
+              <span class="award-dot" aria-hidden="true"></span>
+              <span class="award-text">
+                First Place, Page Design — Intermediate
+                <small>Polk State College &middot; Fall 2020</small>
+              </span>
+            </li>
+            <li class="award-item">
+              <span class="award-dot" aria-hidden="true"></span>
+              <span class="award-text">
+                First Place, Video Editing — Intermediate
+                <small>Polk State College &middot; Fall 2020</small>
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="reveal">
+          <h3 class="subsection-title">Professional Experience</h3>
+          <div class="exp-list">
+            <div class="exp-item">
+              <p class="exp-role">Lead Graphic Designer, Enrollment Management</p>
+              <p class="exp-org">Florida Southern College &mdash; Lakeland, FL</p>
+              <p class="exp-dates">December 2022 &ndash; Present</p>
+            </div>
+            <div class="exp-item">
+              <p class="exp-role">Graphic Designer &amp; Prepress Technician</p>
+              <p class="exp-org">Innovative Ink &mdash; Lakeland, FL</p>
+              <p class="exp-dates">January 2021 &ndash; December 2022</p>
+            </div>
+            <div class="exp-item">
+              <p class="exp-role">Digital Media Intern</p>
+              <p class="exp-org">CNP Agency &mdash; Winter Haven, FL</p>
+              <p class="exp-dates">September 2020 &ndash; December 2020</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SKILLS BAND ───────────────────────────────────────────────────── -->
+  <div id="skills" role="complementary" aria-label="Skills">
+    <div class="skills-inner">
+      <span class="skills-label">Skills</span>
+      <span class="skill-tag">Adobe Creative Cloud</span>
+      <span class="skill-tag">Blender 3D &amp; Maya</span>
+      <span class="skill-tag">Unity 6 / Game Dev</span>
+      <span class="skill-tag">Generative AI</span>
+      <span class="skill-tag">HTML / CSS / JS</span>
+      <span class="skill-tag">C# &amp; Python</span>
+      <span class="skill-tag">Gephi / Network Analysis</span>
+      <span class="skill-tag">Digital Humanities Research</span>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ────────────────────────────────────────────────────────── -->
+  <footer>
+    <p>&copy; 2026 Jermaine Johnson &middot; Ph.D. Candidate, Texts &amp; Technology — Digital Media</p>
+    <p>University of Central Florida &middot; <a href="mailto:JermaineJeromeJohnson@gmail.com">JermaineJeromeJohnson@gmail.com</a></p>
+  </footer>
+
+  <!-- ── JAVASCRIPT ────────────────────────────────────────────────────── -->
+  <script>
+    // Mobile nav toggle
+    const toggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a');
+    const activeObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navAnchors.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-35% 0px -60% 0px' });
+    sections.forEach(s => activeObserver.observe(s));
+
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .reveal-group').forEach(el => revealObserver.observe(el));
+  </script>
+
+</body>
+</html>
